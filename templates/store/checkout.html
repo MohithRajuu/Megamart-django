@@ -1,19 +1,21 @@
 {% extends 'base.html' %}
-
 {% load static %}
+
 {% block content %}
+
 
 <section class="section-content padding-y bg">
 <div class="container">
 
+<!-- ============================ COMPONENT 1 ================================= -->
 
 <div class="row">
 	<aside class="col-lg-6">
 <div class="card">
   <div class="card-body">
     <h4 class="card-title mb-4">Billing Address</h4>
-    <form action="" method="POST">
-			{% csrf_token %}
+    <form action="{% url 'place_order' %}" method="POST">
+      {% csrf_token %}
       <div class="form-row">
         <div class="col form-group">
           <label for="">First Name</label>
@@ -47,7 +49,7 @@
       <div class="form-row">
         <div class="col form-group">
           <label for="">City</label>
-          <input type="text" name="city" class="form-control">
+          <input type="text" name="city" class="form-control" required>
         </div>
         <div class="col form-group">
           <label for="">State</label>
@@ -57,11 +59,12 @@
           <label for="">Country</label>
           <input type="text" name="country" class="form-control" required>
         </div>
-      </div>
-      <div class="form-row">
-        <label for="">Order Note</label>
-        <textarea name="order_note" rows="2" class="form-control"></textarea>
-      </div>
+        </div>
+        <div class="form-row">
+          <label for="">Order Note</label>
+          <textarea name="order_note" rows="2" class="form-control"></textarea>
+        </div>
+
 
   </div>
 </div> <!-- card.// -->
@@ -88,40 +91,40 @@
       		<figure class="itemside align-items-center">
       			<div class="aside"><img src="{{ cart_item.product.images.url }}" class="img-sm"></div>
       			<figcaption class="info">
-      				<a href="{{ cart_item.product.get_url}}" class="title text-dark">{{ cart_item.product.product_name }}</a>
+      				<a href="{{ cart_item.product.get_url }}" class="title text-dark">{{ cart_item.product.product_name }}</a>
       				<p class="text-muted small">
-      						{% if cart_item.variations.all %}
-      							{% for item in cart_item.variations.all %}
-      								{{ item.variation_category | capfirst }} : {{ item.variation_value | capfirst }} <br>
-      							{% endfor %}
-      						{% endif %}
+      					{% if cart_item.variations.all %}
+      						{% for item in cart_item.variations.all %}
+      							{{ item.variation_category | capfirst }} : {{ item.variation_value | capfirst }} <br>
+      						{% endfor %}
+      					{% endif %}
       				</p>
       			</figcaption>
       		</figure>
       	</td>
       	<td>
       		<!-- col.// -->
-      				<label for="">{{ cart_item.quantity }}</label>
+      				<label for="">{{cart_item.quantity}}</label>
       	</td>
       	<td>
       		<div class="price-wrap">
-      			<var class="price">${{ cart_item.sub_total }}</var>
-      			<small class="text-muted"> ${{ cart_item.product.price }} </small>
+      			<var class="price">$ {{ cart_item.sub_total }}</var>
+      			<small class="text-muted"> $ {{ cart_item.product.price }} each </small>
       		</div> <!-- price-wrap .// -->
       	</td>
 
       </tr>
       {% endfor %}
 
-
       </tbody>
       </table>
 
-			<button type="submit" name="submit" class="btn btn-primary btn-block">Place Order</button>
+      <button type="submit" name="submit" class="btn btn-primary btn-block">Place Order</button>
 			<a href="{% url 'store' %}" class="btn btn-light btn-block">Continue Shopping</a>
-			</form>
+      </form>
 		</div> <!-- card-body.// -->
 		</div> <!-- card.// -->
+
 
 </aside> <!-- col.// -->
 
@@ -132,5 +135,6 @@
 
 </div> <!-- container .//  -->
 </section>
+<!-- ========================= SECTION CONTENT END// ========================= -->
 
 {% endblock %}
