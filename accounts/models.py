@@ -64,6 +64,9 @@ class Account(AbstractBaseUser):
     def __str__(self):
         return self.email
 
+    def full_name(self):
+        return f'{self.first_name} {self.last_name}'
+
     #giving all permissions to the admin
     def has_perm(self, obj=None):
         return self.is_admin
