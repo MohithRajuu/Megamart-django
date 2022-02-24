@@ -1,6 +1,8 @@
 # Megamart-django
 Clothing e-commerce website using Django, Bootstrap and Paypal
 
+        ** PROJECT DEMO **
+
 First, We have the login page.
 
 ![](images/login.png)
@@ -9,9 +11,6 @@ Once, logged in you are welcomed to the Dashboard Screen.
 
 ![](images/dashboard.png)
 
-Here, you can edit profile,
-
-![](images/edit_profile.png)
 
 View Previous orders,
 
@@ -27,7 +26,7 @@ Clicking on the megamart icon gives you the Homepage.
 
 You can navigate to store, select the products you like add it to the cart.
 
-![](images/prodcut_demo.png)
+![](images/product_demo.png)
 
 You can now proceed to the payment details and enter the billing address.
 
